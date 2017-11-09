@@ -1,58 +1,41 @@
 package com.jyheo.activityintent;
 
+/**
+ * Created by BaekByoungSoo on 2017. 11. 9..
+ */
+
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
 
-public class FirstActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "ActivityLifeCycle";
     private static final int request_code = 0;
-    private  ListView mListView;
-    
+    private ListView mListView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //res/layout의 activity_first.xml 뷰에 세팅
         setContentView(R.layout.activity_first);
 
-
-                /* 위젯과 멤버변수 참조 획득 */
         mListView = (ListView)findViewById(R.id.listView);
 
         /* 아이템 추가 및 어댑터 등록 */
         dataSetting();
 
-        //로그 보기
         Log.i(TAG, getLocalClassName() + ".onCreate");
 
-        //activity_first의 buttonSecondActivity 버튼 눌리면
-        Button btn = (Button)findViewById(R.id.buttonSecondActivity);
-        /*btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //인텐드를 사용해서 SecondActivity.java를 호출하고 액티비티 실행
-                Intent intent = new Intent(getApplicationContext(), SecondActivity.class);
-                startActivity(intent);
-            }
-        });*/
-
-        btn = (Button)findViewById(R.id.buttonDialActivity);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //암시적 인텐드 실행 114로 전화 걸기
-                Intent implicit_intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:114"));
-                startActivity(implicit_intent);
-            }
-        });
+        Button btn;
 
         btn = (Button)findViewById(R.id.buttonThirdActivity);
         btn.setOnClickListener(new View.OnClickListener() {
@@ -70,13 +53,17 @@ public class FirstActivity extends AppCompatActivity {
 
         MyAdapter mMyAdapter = new MyAdapter();
 
-
         for (int i=0; i<10; i++) {
             mMyAdapter.addItem(ContextCompat.getDrawable(getApplicationContext(), R.drawable.pic1), "name_" + i, "contents_" + i);
         }
 
-        /* 리스트뷰에 어댑터 등록 */
         mListView.setAdapter(mMyAdapter);
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.new_menu ,menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
