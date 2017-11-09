@@ -10,14 +10,17 @@
         android:theme="@style/AppTheme">
         <activity android:name=".FirstActivity"
             android:label="First Activity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".ThirdActivity"
             android:label="Third Activity"></activity>
+        <activity android:name=".LodingActivity"
+            android:label="Loading Activity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
