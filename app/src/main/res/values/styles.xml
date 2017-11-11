@@ -9,4 +9,13 @@
 
     </style>
 
+    <style name="IntroTheme" parent="android:Theme.Light.NoTitleBar">
+        <item name="android:windowBackground">@drawable/back1</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+
+    출처: http://dev.re.kr/29 [Dev.re.kr]
+
 </resources>

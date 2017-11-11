@@ -1,83 +1,91 @@
 package com.jyheo.activityintent;
 
-/**
- * Created by BaekByoungSoo on 2017. 11. 9..
- */
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentTransaction;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
 
+/**
+ * Created by BaekByoungSoo on 2017. 11. 11..
+ */
 
-public class MainActivity extends AppCompatActivity {
+public class FirstFragment extends Fragment {
 
     private static final String TAG = "ActivityLifeCycle";
+
     private static final int request_code = 0;
+
     private ListView mListView;
 
+    View view;
+    
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        
+        view = inflater.inflate(R.layout.fragment_first,container,false);
+        
+        return view;
+//        return super.onCreateView(inflater, container, savedInstanceState);
+    }
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
 
-        setContentView(R.layout.activity_first);
+        //res/layout의 activity_first.xml 뷰에 세팅
+        
+//        setContentView(R.layout.activity_first);
 
-        final FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.container, new FirstFragment());
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
+        mListView = (ListView) view.findViewById(R.id.listView);
 
-/*
-
-        mListView = (ListView)findViewById(R.id.listView);
-
-        */
-/* 아이템 추가 및 어댑터 등록 *//*
-
+        /* 아이템 추가 및 어댑터 등록 */
         dataSetting();
 
-        Log.i(TAG, getLocalClassName() + ".onCreate");
+        Log.i(TAG, this.getClass().getName() + ".onCreate");
 
         Button btn;
 
-        btn = (Button)findViewById(R.id.buttonThirdActivity);
+        btn = (Button) view.findViewById(R.id.buttonThirdActivity);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //ThirdActivity의 "UseDefinedExtra"에 "Hello"를 싣고, 액티비티 실행
-                Intent intent = new Intent(getApplicationContext(), ThirdActivity.class);
+                Intent intent = new Intent(getContext(), ThirdActivity.class);
                 intent.putExtra("UserDefinedExtra", "Hello");
                 startActivityForResult(intent, request_code);
             }
         });
-*/
-
     }
-
 
     private void dataSetting(){
 
         MyAdapter mMyAdapter = new MyAdapter();
 
         for (int i=0; i<10; i++) {
-            mMyAdapter.addItem(ContextCompat.getDrawable(getApplicationContext(), R.drawable.pic1), "name_" + i, "contents_" + i);
+            mMyAdapter.addItem(ContextCompat.getDrawable(getContext(), R.drawable.pic1), "name_" + i, "contents_" + i);
         }
 
         mListView.setAdapter(mMyAdapter);
     }
 
     public boolean onCreateOptionsMenu(Menu menu){
-        MenuInflater inflater = getMenuInflater();
+        MenuInflater inflater = getActivity().getMenuInflater();
         inflater.inflate(R.menu.new_menu ,menu);
-        return super.onCreateOptionsMenu(menu);
+        return getActivity().onCreateOptionsMenu(menu);
     }
 
+
+    /*
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -89,38 +97,38 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
-        Log.i(TAG, getLocalClassName() + ".onStart");
+    void onStart() {
+        onStart();
+        Log.i(TAG, this.getClass().getName() + ".onStart");
     }
 
     @Override
     protected void onRestart() {
-        super.onRestart();
-        Log.i(TAG, getLocalClassName() + ".onRestart");
+        onRestart();
+        Log.i(TAG, this.getClass().getName() + ".onRestart");
     }
 
     @Override
     protected void onResume() {
-        super.onResume();
-        Log.i(TAG, getLocalClassName() + ".onResume");
+        onResume();
+        Log.i(TAG, this.getClass().getName() + ".onResume");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Log.i(TAG, getLocalClassName() + ".onPause");
+        Log.i(TAG, this.getClass().getName() + ".onPause");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        Log.i(TAG, getLocalClassName() + ".onStop");
+        Log.i(TAG, this.getClass().getName() + ".onStop");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.i(TAG, getLocalClassName() + ".onDestroy");
-    }
+        Log.i(TAG, this.getClass().getName() + ".onDestroy");
+    }*/
 }
