@@ -14,6 +14,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.widget.ListView;
 
+import jxl.Sheet;
+import jxl.Workbook;
+
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "ActivityLifeCycle";
@@ -46,6 +49,12 @@ public class MainActivity extends AppCompatActivity {
             return;
         String msg = data.getStringExtra("ResultString");
         Log.i(TAG, "ActivityResult:" + resultCode + " " + msg);
+    }
+
+    private void copyExcelDataToDatabase() {
+        Log.w("ExcelToDatabase", "copyExcelDataToDatabase()");
+        Workbook workbook = null;
+        Sheet sheet = null;
     }
 
     @Override

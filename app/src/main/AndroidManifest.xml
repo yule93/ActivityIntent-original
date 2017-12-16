@@ -3,6 +3,7 @@
     package="com.jyheo.activityintent">
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <application
         android:allowBackup="true"
@@ -11,13 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCm4jyAfuZ8pcMmxgWyoOlR39lhGHF2Y3g"/>
+
         <activity android:name=".LodingActivity"
             android:label="Loading Activity">
         </activity>
 
         <activity android:name=".MainActivity"
             android:label="First Activity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

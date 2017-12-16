@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Activity Intent</string>
+    <string name="app_name">Bunker</string>
     <string name="start_third_activity_with_extra_data">start third activity with extra data</string>
     <string name="start_dial_activity">Start Dial Activity</string>
     <string name="start_second_activity">Start Second Activity</string>
