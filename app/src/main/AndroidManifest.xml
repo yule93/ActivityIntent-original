@@ -18,14 +18,23 @@
 
         <activity android:name=".LodingActivity"
             android:label="Loading Activity">
-        </activity>
-
-        <activity android:name=".MainActivity"
-            android:label="First Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+        </activity>
+
+        <activity android:name=".MainActivity"
+            android:label="First Activity">
+<<<<<<< HEAD
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+=======
+
+>>>>>>> b5231b3f736f8a9c854d93258557f1d0a994963a
         </activity>
 
         <activity android:name=".ThirdActivity"
