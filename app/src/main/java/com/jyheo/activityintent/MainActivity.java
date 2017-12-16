@@ -16,60 +16,20 @@ import android.widget.ListView;
 
 
 public class MainActivity extends AppCompatActivity {
-
     private static final String TAG = "ActivityLifeCycle";
     private static final int request_code = 0;
     private ListView mListView;
+    private DBHelper mDBHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
         setContentView(R.layout.activity_first);
 
         final FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.container, new FirstFragment());
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
-
-/*
-
-        mListView = (ListView)findViewById(R.id.listView);
-
-        */
-/* 아이템 추가 및 어댑터 등록 *//*
-
-        dataSetting();
-
-        Log.i(TAG, getLocalClassName() + ".onCreate");
-
-        Button btn;
-
-        btn = (Button)findViewById(R.id.buttonThirdActivity);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //ThirdActivity의 "UseDefinedExtra"에 "Hello"를 싣고, 액티비티 실행
-                Intent intent = new Intent(getApplicationContext(), ThirdActivity.class);
-                intent.putExtra("UserDefinedExtra", "Hello");
-                startActivityForResult(intent, request_code);
-            }
-        });
-*/
-
-    }
-
-
-    private void dataSetting(){
-
-        MyAdapter mMyAdapter = new MyAdapter();
-
-        for (int i=0; i<10; i++) {
-            mMyAdapter.addItem(ContextCompat.getDrawable(getApplicationContext(), R.drawable.pic1), "name_" + i, "contents_" + i);
-        }
-
-        mListView.setAdapter(mMyAdapter);
     }
 
     public boolean onCreateOptionsMenu(Menu menu){

@@ -21,40 +21,26 @@ import android.widget.ListView;
 public class FirstFragment extends Fragment {
 
     private static final String TAG = "ActivityLifeCycle";
-
     private static final int request_code = 0;
-
     private ListView mListView;
-
     View view;
-    
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        
         view = inflater.inflate(R.layout.fragment_first,container,false);
-        
         return view;
 //        return super.onCreateView(inflater, container, savedInstanceState);
     }
-
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
         //res/layout의 activity_first.xml 뷰에 세팅
-        
 //        setContentView(R.layout.activity_first);
-
         mListView = (ListView) view.findViewById(R.id.listView);
-
         /* 아이템 추가 및 어댑터 등록 */
         dataSetting();
-
         Log.i(TAG, this.getClass().getName() + ".onCreate");
-
         Button btn;
-
         btn = (Button) view.findViewById(R.id.buttonThirdActivity);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,13 +54,10 @@ public class FirstFragment extends Fragment {
     }
 
     private void dataSetting(){
-
         MyAdapter mMyAdapter = new MyAdapter();
-
-        for (int i=0; i<10; i++) {
-            mMyAdapter.addItem(ContextCompat.getDrawable(getContext(), R.drawable.pic1), "name_" + i, "contents_" + i);
-        }
-
+        mMyAdapter.addItem(ContextCompat.getDrawable(getContext(), R.drawable.pic1), "name_" + 1, "contents_" + 1);
+        mMyAdapter.addItem(ContextCompat.getDrawable(getContext(), R.drawable.pic2), "name_" + 2, "contents_" + 2);
+        mMyAdapter.addItem(ContextCompat.getDrawable(getContext(), R.drawable.pic3), "name_" + 3, "contents_" + 3);
         mListView.setAdapter(mMyAdapter);
     }
 

@@ -35,8 +35,7 @@ public class SplashActivity extends AppCompatActivity {
                 startActivity(intent);
                 // 액티비티 이동시 페이드인/아웃 효과를 보여준다. 즉, 인트로
                 //    화면에 부드럽게 사라진다.
-                overridePendingTransition(android.R.anim.fade_in,
-                        android.R.anim.fade_out);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 
             }
         }, 2000);
@@ -45,9 +44,9 @@ public class SplashActivity extends AppCompatActivity {
     // 인트로 화면 이후.
     private void afterIntro(Bundle savedInstanceState) {
         // 기본 테마를 지정한다.
-        //setTheme(R.style.AppTheme);
-        setContentView(R.layout.activity_first);
+        setTheme(R.style.AppTheme);
         finish();
+        setContentView(R.layout.activity_first);
     }
 
 
